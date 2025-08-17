@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from 'react';
+import BarcodeComponent from './barcode';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
 import styles from './page.module.css';
@@ -107,23 +108,55 @@ export default function BoardingPass() {
         {/* Preview Column */}
         <div className={styles.previewColumn}>
           <div ref={cardRef} className={styles.boardingPass}>
-            <div className={styles.header}>
+            <div style={{display: 'flex', flexDirection: 'row', width: '100%', height: '100%'}}>
+            <div className={styles.leftSide}>
+              <p style={{fontWeight: 'bolder', marginBottom:'10px'}}>{ticketData.class}</p>
+              <p style={{ fontWeight: 'bold', marginBottom:'15px'}}>{ticketData.fullName}</p>
+              <div style={{marginBottom:'15px'}}><p>{ticketData.originAirport}</p>
+              <p>{ticketData.destinationAirport}</p></div>
+
+              <div style={{marginBottom:'15px'}}>
+              <p>{ticketData.sequence}</p>
+              <p>{ticketData.recordLocator}</p>
+              </div>
+
+
+              <div >
+              {/* <img src="/barcode.png" alt="barcode" style={{ width: '100%', height: '100%', objectFit: 'fill', display: 'block' }}/> */}
+              <BarcodeComponent value="123456789012" />
+           </div>
+
+            </div>
+            <div className={styles.rightSide}></div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+            {/* <div className={styles.header}>
               <div className={styles.airlineLogo}></div>
               <div className={styles.headerText}>
                 <span>{ticketData.airline.toUpperCase()}</span>
                 <span>BOARDING PASS</span>
               </div>
-            </div>
+            </div> */}
 
-            <div className={styles.passengerInfo}>
+            {/* <div className={styles.passengerInfo}>
               <div className={styles.passengerName}>{ticketData.fullName}</div>
               <div className={styles.routeInfo}>
                 <div>{ticketData.originAirport}</div>
                 <div>{ticketData.destinationAirport}</div>
               </div>
-            </div>
+            </div> */}
 
-            <div className={styles.flightDetails}>
+            {/* <div className={styles.flightDetails}>
               <div className={styles.detailGrid}>
                 <div>
                   <label>FLIGHT</label>
@@ -154,14 +187,14 @@ export default function BoardingPass() {
                   <div>{ticketData.seat}</div>
                 </div>
               </div>
-            </div>
+            </div> */}
 
-            <div className={styles.additionalInfo}>
+            {/* <div className={styles.additionalInfo}>
               <div>{ticketData.sequence}</div>
               <div>{ticketData.class}</div>
-            </div>
+            </div> */}
 
-            <div className={styles.barcodeArea}>
+            {/* <div className={styles.barcodeArea}>
               {makePseudoBarcode(ticketData.recordLocator).map((bar, index) => (
                 <div
                   key={index}
@@ -173,11 +206,11 @@ export default function BoardingPass() {
                   }}
                 />
               ))}
-            </div>
+            </div> */}
 
-            <div className={styles.footer}>
+            {/* <div className={styles.footer}>
               <small>GATES CLOSE 15 MINUTES BEFORE DEPARTURE</small>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

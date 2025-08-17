@@ -59,14 +59,14 @@
 /* Boarding Pass Preview */
 .boardingPass {
     background-color: #F5F5F5;
-    border: 1px solid #ddd;
+    /* border: 1px solid #ff0000; */
     border-radius: 10px;
     padding: 40px;
     width: 800px;
-    height: 338px;
+    /* height: 33338px; */
     /* Typical boarding pass ratio of ~1:2.36 */
     max-width: 800px;
-    max-height: 338px;
+    /* max-height: 338px; */
     position: relative;
     display: grid;
     grid-template-rows: auto 1fr auto auto auto;
@@ -83,24 +83,34 @@
 
     .boardingPass {
         width: 100%;
-        max-width: 800px;
-        height: auto;
-        aspect-ratio: 800 / 338;
+        max-width: 888px;
+
+
+
+
+        /* aspect-ratio: 800 / 338; */
+        aspect-ratio: 10000
     }
 }
 
 @media (max-width: 1536px) {
+
+    /* Here is where im working with for now. the height area! */
     .boardingPass {
-        padding: 20px;
+        padding: 15px;
+
         width: 90%;
-        height: auto;
+        /* height: auto; */
+        height: 330px;
+
     }
 }
 
 @media (max-width: 768px) {
     .boardingPass {
-        width: 100%;
+        width: 210%;
         padding: 10px;
+
     }
 }
 
@@ -228,4 +238,23 @@
     .actionButtons {
         display: none;
     }
+}
+
+/* //////////////////////////////////////////////////////////////////////// */
+
+.leftSide {
+    font-size: 1.3rem;
+
+    /* border: 1px solid #000000; */
+    margin-left: 65px;
+    width: 40%;
+    height: 27vh;
+
+}
+
+.rightSide {
+
+    border: 1px solid #1100ff;
+    width: 60%;
+    height: 27vh;
 }
