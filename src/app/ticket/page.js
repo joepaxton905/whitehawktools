@@ -81,36 +81,69 @@ const Ticket = () => {
                 {/* Right side - stub */}
                 <div style={{
                     flex: '1',
-                    padding: '20px',
                     backgroundColor: '#f8f9fa',
                     display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    alignItems: 'center'
+                    position: 'relative'
                 }}>
-                    <div style={{ fontSize: '10px', color: '#666', textAlign: 'center' }}>
-                        BOARDING PASS
-                    </div>
-
-                    <div style={{ textAlign: 'center' }}>
-                        <div style={{ fontSize: '12px', fontWeight: 'bold', marginBottom: '5px' }}>
-                            AA 1234
-                        </div>
-                        <div style={{ fontSize: '10px', color: '#666', marginBottom: '5px' }}>
-                            15 MAR
-                        </div>
-                        <div style={{ fontSize: '10px', fontWeight: 'bold' }}>
-                            12A
-                        </div>
-                    </div>
-
                     <div style={{
-                        width: '60px',
-                        height: '20px',
-                        backgroundColor: '#000',
-                        background: 'repeating-linear-gradient(90deg, #000 0px, #000 2px, #fff 2px, #fff 4px)',
-                        marginTop: '10px'
-                    }}></div>
+                        flex: '1',
+                        padding: '15px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'space-between',
+                        alignItems: 'center'
+                    }}>
+                        <div style={{ fontSize: '10px', color: '#666', textAlign: 'center' }}>
+                            BOARDING PASS
+                        </div>
+
+                        <div style={{ textAlign: 'center' }}>
+                            <div style={{ fontSize: '12px', fontWeight: 'bold', marginBottom: '5px' }}>
+                                AA 1234
+                            </div>
+                            <div style={{ fontSize: '10px', color: '#666', marginBottom: '5px' }}>
+                                15 MAR
+                            </div>
+                            <div style={{ fontSize: '10px', fontWeight: 'bold' }}>
+                                12A
+                            </div>
+                        </div>
+
+                        <div style={{
+                            width: '60px',
+                            height: '20px',
+                            backgroundColor: '#000',
+                            background: 'repeating-linear-gradient(90deg, #000 0px, #000 2px, #fff 2px, #fff 4px)',
+                            marginTop: '10px'
+                        }}></div>
+                    </div>
+
+                    {/* Vertical warning at the right edge */}
+                    <div style={{
+                        position: 'absolute',
+                        right: '0',
+                        top: '0',
+                        bottom: '0',
+                        width: '25px',
+                        backgroundColor: '#d32f2f',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        writingMode: 'vertical-rl',
+                        textOrientation: 'mixed'
+                    }}>
+                        <div style={{
+                            fontSize: '7px',
+                            color: 'white',
+                            fontWeight: 'bold',
+                            textAlign: 'center',
+                            lineHeight: '1.3',
+                            letterSpacing: '0.3px',
+                            padding: '5px 2px'
+                        }}>
+                            BOARDING GATES CLOSE 15 MINUTES BEFORE DEPARTURE TIME. PASSENGERS MAY NOT BE ACCEPTED FOR TRAVEL AFTER GATES CLOSE.
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
