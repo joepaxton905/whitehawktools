@@ -142,7 +142,7 @@ const Ticket = () => {
                         </div>
 
                         <div style={{
-                            width: '50px',
+                            width: '90px',
                             height: '15px',
                             backgroundColor: '#000',
                             background: `
