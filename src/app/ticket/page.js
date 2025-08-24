@@ -25,14 +25,37 @@ const Ticket = () => {
                     borderRight: '2px dashed #ccc',
                     display: 'flex',
                     flexDirection: 'column',
-                    justifyContent: 'space-between'
+                    justifyContent: 'space-between',
+                    position: 'relative'
                 }}>
+                    {/* PDF417 barcode at the beginning of left side */}
+                    <div style={{
+                        position: 'absolute',
+                        left: '5px',
+                        top: '10px',
+                        bottom: '10px',
+                        width: '15px',
+                        background: `
+                            repeating-linear-gradient(0deg,
+                                #000 0px, #000 1px, #fff 1px, #fff 2px,
+                                #000 2px, #000 4px, #fff 4px, #fff 5px,
+                                #000 5px, #000 6px, #fff 6px, #fff 8px,
+                                #000 8px, #000 10px, #fff 10px, #fff 11px,
+                                #000 11px, #000 12px, #fff 12px, #fff 14px,
+                                #000 14px, #000 16px, #fff 16px, #fff 17px,
+                                #000 17px, #000 18px, #fff 18px, #fff 20px
+                            )
+                        `,
+                        borderRadius: '2px'
+                    }}></div>
+
                     {/* Header */}
                     <div style={{
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignItems: 'center',
-                        marginBottom: '15px'
+                        marginBottom: '15px',
+                        marginLeft: '25px'
                     }}>
                         <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#0066cc' }}>
                             AMERICAN AIRLINES
@@ -43,7 +66,7 @@ const Ticket = () => {
                     </div>
 
                     {/* Passenger and Route */}
-                    <div style={{ marginBottom: '15px' }}>
+                    <div style={{ marginBottom: '15px', marginLeft: '25px' }}>
                         <div style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '5px' }}>
                             JOHN SMITH
                         </div>
@@ -58,7 +81,7 @@ const Ticket = () => {
                     </div>
 
                     {/* Flight Details */}
-                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', marginLeft: '25px' }}>
                         <div>
                             <div style={{ color: '#666' }}>FLIGHT</div>
                             <div style={{ fontWeight: 'bold' }}>AA 1234</div>
@@ -122,7 +145,16 @@ const Ticket = () => {
                             width: '50px',
                             height: '15px',
                             backgroundColor: '#000',
-                            background: 'repeating-linear-gradient(90deg, #000 0px, #000 2px, #fff 2px, #fff 4px)'
+                            background: `
+                                repeating-linear-gradient(90deg,
+                                    #000 0px, #000 1px, #fff 1px, #fff 2px,
+                                    #000 2px, #000 3px, #fff 3px, #fff 5px,
+                                    #000 5px, #000 6px, #fff 6px, #fff 7px,
+                                    #000 7px, #000 9px, #fff 9px, #fff 10px,
+                                    #000 10px, #000 11px, #fff 11px, #fff 13px,
+                                    #000 13px, #000 15px, #fff 15px, #fff 16px
+                                )
+                            `
                         }}></div>
                     </div>
 
