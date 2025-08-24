@@ -1,0 +1,120 @@
+const Ticket = () => {
+    return (
+        <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            minHeight: '100vh',
+            backgroundColor: '#f0f0f0',
+            padding: '20px'
+        }}>
+            <div style={{
+                width: '600px',
+                height: '200px',
+                backgroundColor: 'white',
+                border: '2px solid #ddd',
+                borderRadius: '10px',
+                boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+                display: 'flex',
+                overflow: 'hidden'
+            }}>
+                {/* Left side - main ticket */}
+                <div style={{
+                    flex: '3',
+                    padding: '20px',
+                    borderRight: '2px dashed #ccc',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between'
+                }}>
+                    {/* Header */}
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        marginBottom: '15px'
+                    }}>
+                        <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#0066cc' }}>
+                            AMERICAN AIRLINES
+                        </div>
+                        <div style={{ fontSize: '12px', color: '#666' }}>
+                            FLIGHT TICKET
+                        </div>
+                    </div>
+
+                    {/* Passenger and Route */}
+                    <div style={{ marginBottom: '15px' }}>
+                        <div style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '5px' }}>
+                            JOHN SMITH
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', fontSize: '14px' }}>
+                            <span style={{ fontWeight: 'bold' }}>JFK</span>
+                            <span style={{ margin: '0 10px', color: '#666' }}>→</span>
+                            <span style={{ fontWeight: 'bold' }}>LAX</span>
+                        </div>
+                        <div style={{ fontSize: '12px', color: '#666' }}>
+                            NEW YORK → LOS ANGELES
+                        </div>
+                    </div>
+
+                    {/* Flight Details */}
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px' }}>
+                        <div>
+                            <div style={{ color: '#666' }}>FLIGHT</div>
+                            <div style={{ fontWeight: 'bold' }}>AA 1234</div>
+                        </div>
+                        <div>
+                            <div style={{ color: '#666' }}>DATE</div>
+                            <div style={{ fontWeight: 'bold' }}>15 MAR 2024</div>
+                        </div>
+                        <div>
+                            <div style={{ color: '#666' }}>TIME</div>
+                            <div style={{ fontWeight: 'bold' }}>14:30</div>
+                        </div>
+                        <div>
+                            <div style={{ color: '#666' }}>SEAT</div>
+                            <div style={{ fontWeight: 'bold' }}>12A</div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Right side - stub */}
+                <div style={{
+                    flex: '1',
+                    padding: '20px',
+                    backgroundColor: '#f8f9fa',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    alignItems: 'center'
+                }}>
+                    <div style={{ fontSize: '10px', color: '#666', textAlign: 'center' }}>
+                        BOARDING PASS
+                    </div>
+
+                    <div style={{ textAlign: 'center' }}>
+                        <div style={{ fontSize: '12px', fontWeight: 'bold', marginBottom: '5px' }}>
+                            AA 1234
+                        </div>
+                        <div style={{ fontSize: '10px', color: '#666', marginBottom: '5px' }}>
+                            15 MAR
+                        </div>
+                        <div style={{ fontSize: '10px', fontWeight: 'bold' }}>
+                            12A
+                        </div>
+                    </div>
+
+                    <div style={{
+                        width: '60px',
+                        height: '20px',
+                        backgroundColor: '#000',
+                        background: 'repeating-linear-gradient(90deg, #000 0px, #000 2px, #fff 2px, #fff 4px)',
+                        marginTop: '10px'
+                    }}></div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default Ticket;

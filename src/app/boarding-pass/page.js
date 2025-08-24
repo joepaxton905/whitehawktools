@@ -109,7 +109,8 @@ export default function BoardingPass() {
         <div className={styles.previewColumn}>
           <div ref={cardRef} className={styles.boardingPass}>
             <div style={{display: 'flex', flexDirection: 'row', width: '100%', height: '100%'}}>
-            <div className={styles.leftSide}>
+
+            <div className={styles.leftSide} style={{fontWeight:"bold"}}>
               <p style={{fontWeight: 'bolder', marginBottom:'10px'}}>{ticketData.class}</p>
               <p style={{ fontWeight: 'bold', marginBottom:'15px'}}>{ticketData.fullName}</p>
               <div style={{marginBottom:'15px'}}><p>{ticketData.originAirport}</p>
@@ -127,7 +128,51 @@ export default function BoardingPass() {
            </div>
 
             </div>
-            <div className={styles.rightSide}></div>
+            <div className={styles.rightSide} style={{fontWeight:"bold"}}>
+              <div style={{border:"solid", width:"100%", borderColor:"green", height:"15%", display:"flex", justifyContent:"space-between"}}>
+                <p>{ticketData.class}</p>
+                <p>BOARDING PASS</p>
+            </div>
+            <p>{ticketData.fullName}</p>
+            <div className={styles.mainBox}>
+              <div className={styles.mainBox1}>
+                <p>{ticketData.flightNumber}</p>
+                <p>TERMINAL</p>
+              </div>
+              <div className={styles.mainBox1}>
+                <p>{ticketData.flightDateISO}</p>
+                <p>{ticketData.terminal}</p>
+                <p>{ticketData.gate}</p>
+              </div>
+              <div className={styles.mainBox2}>
+                <p>TERMINAL</p>
+                <p>Gate</p>
+                <p>Boarding Time</p>
+                <p>Group</p>
+                <p>Seat</p>
+              </div>
+              <div className={styles.mainBox3}>
+                <p>{ticketData.terminal}</p>
+                <p>{ticketData.gate}</p>
+                <p>{ticketData.boardingTime}</p>
+                <p>{ticketData.group}</p>
+                <p>{ticketData.seat}</p>
+              </div>
+
+
+
+            </div>
+            <div>
+                <p>American Airlines</p>
+                <div style={{display:"flex", justifyContent:"space-between"}}><p style={{fontSize:"10px"}}>GATES CLOSE 15 MINUTES BEFORE DEPARTURE</p>
+                <p>American Airlines</p>
+
+                </div>
+              </div>
+
+
+
+            </div>
             </div>
 
 

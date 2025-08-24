@@ -245,10 +245,10 @@
 .leftSide {
     font-size: 1.3rem;
 
-    /* border: 1px solid #000000; */
+    border: 1px solid #000000;
     margin-left: 65px;
     width: 40%;
-    height: 27vh;
+    height: 37vh;
 
 }
 
@@ -256,5 +256,41 @@
 
     border: 1px solid #1100ff;
     width: 60%;
-    height: 27vh;
+    height: 37vh;
+}
+
+.mainBox {
+    margin-top: 10px;
+    border: 1px solid #1100ff;
+    width: 85%;
+    height: 150px;
+}
+
+.mainBox1 {
+    border: 1px solid #ff0000;
+    /* width: 85%; */
+    height: 20px;
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.mainBox2 {
+    border: 1px solid #1e00ff;
+    /* width: 85%; */
+    margin-top: 40px;
+    height: 20px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.mainBox3 {
+    border: 1px solid #48ff00;
+    /* width: 85%; */
+    margin-top: 10px;
+    height: 20px;
+    display: flex;
+    justify-content: space-between;
+
 }
