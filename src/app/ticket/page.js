@@ -87,34 +87,42 @@ const Ticket = () => {
                 }}>
                     <div style={{
                         flex: '1',
-                        padding: '15px',
+                        padding: '10px',
                         display: 'flex',
                         flexDirection: 'column',
                         justifyContent: 'space-between',
                         alignItems: 'center'
                     }}>
-                        <div style={{ fontSize: '10px', color: '#666', textAlign: 'center' }}>
+                        <div style={{ fontSize: '8px', color: '#666', textAlign: 'center', marginBottom: '5px' }}>
                             BOARDING PASS
                         </div>
 
-                        <div style={{ textAlign: 'center' }}>
-                            <div style={{ fontSize: '12px', fontWeight: 'bold', marginBottom: '5px' }}>
+                        <div style={{ textAlign: 'center', marginBottom: '8px' }}>
+                            <div style={{ fontSize: '9px', fontWeight: 'bold', marginBottom: '3px' }}>
+                                JOHN SMITH
+                            </div>
+                            <div style={{ fontSize: '8px', color: '#666', marginBottom: '3px' }}>
+                                JFK → LAX
+                            </div>
+                        </div>
+
+                        <div style={{ textAlign: 'center', marginBottom: '8px' }}>
+                            <div style={{ fontSize: '10px', fontWeight: 'bold', marginBottom: '3px' }}>
                                 AA 1234
                             </div>
-                            <div style={{ fontSize: '10px', color: '#666', marginBottom: '5px' }}>
+                            <div style={{ fontSize: '8px', color: '#666', marginBottom: '3px' }}>
                                 15 MAR
                             </div>
-                            <div style={{ fontSize: '10px', fontWeight: 'bold' }}>
+                            <div style={{ fontSize: '9px', fontWeight: 'bold' }}>
                                 12A
                             </div>
                         </div>
 
                         <div style={{
-                            width: '60px',
-                            height: '20px',
+                            width: '50px',
+                            height: '15px',
                             backgroundColor: '#000',
-                            background: 'repeating-linear-gradient(90deg, #000 0px, #000 2px, #fff 2px, #fff 4px)',
-                            marginTop: '10px'
+                            background: 'repeating-linear-gradient(90deg, #000 0px, #000 2px, #fff 2px, #fff 4px)'
                         }}></div>
                     </div>
 
