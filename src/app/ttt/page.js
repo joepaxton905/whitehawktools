@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
 
@@ -135,6 +135,27 @@ const RightWarningSVG = ({
 const Ticket = () => {
   const ticketRef = useRef(null);
 
+  // State for ticket information
+  const [ticketInfo, setTicketInfo] = useState({
+    passengerName: 'JOHN SMITH',
+    airline: 'AMERICAN AIRLINES',
+    flightNumber: 'AA 1234',
+    originCode: 'JFK',
+    destinationCode: 'LAX',
+    originCity: 'NEW YORK',
+    destinationCity: 'LOS ANGELES',
+    date: '15 MAR 2024',
+    time: '14:30',
+    seat: '12A'
+  });
+
+  const handleInputChange = (field, value) => {
+    setTicketInfo(prev => ({
+      ...prev,
+      [field]: value
+    }));
+  };
+
   const downloadPDF = async () => {
     if (!ticketRef.current) return;
     try {
@@ -181,6 +202,203 @@ const Ticket = () => {
       display: 'flex', flexDirection: 'column', justifyContent: 'center',
       alignItems: 'center', minHeight: '100vh', backgroundColor: '#f0f0f0', padding: '20px'
     }}>
+      {/* Form for editing ticket information */}
+      <div style={{
+        backgroundColor: 'white',
+        padding: '20px',
+        borderRadius: '10px',
+        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+        marginBottom: '20px',
+        width: '600px',
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr',
+        gap: '15px'
+      }}>
+        <h3 style={{ gridColumn: '1 / -1', margin: '0 0 15px 0', textAlign: 'center' }}>
+          Edit Ticket Information
+        </h3>
+        
+        <div>
+          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
+            Passenger Name:
+          </label>
+          <input
+            type="text"
+            value={ticketInfo.passengerName}
+            onChange={(e) => handleInputChange('passengerName', e.target.value.toUpperCase())}
+            style={{
+              width: '100%',
+              padding: '8px',
+              border: '1px solid #ddd',
+              borderRadius: '4px',
+              fontSize: '14px'
+            }}
+          />
+        </div>
+
+        <div>
+          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
+            Airline:
+          </label>
+          <input
+            type="text"
+            value={ticketInfo.airline}
+            onChange={(e) => handleInputChange('airline', e.target.value.toUpperCase())}
+            style={{
+              width: '100%',
+              padding: '8px',
+              border: '1px solid #ddd',
+              borderRadius: '4px',
+              fontSize: '14px'
+            }}
+          />
+        </div>
+
+        <div>
+          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
+            Flight Number:
+          </label>
+          <input
+            type="text"
+            value={ticketInfo.flightNumber}
+            onChange={(e) => handleInputChange('flightNumber', e.target.value.toUpperCase())}
+            style={{
+              width: '100%',
+              padding: '8px',
+              border: '1px solid #ddd',
+              borderRadius: '4px',
+              fontSize: '14px'
+            }}
+          />
+        </div>
+
+        <div>
+          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
+            Origin Code:
+          </label>
+          <input
+            type="text"
+            value={ticketInfo.originCode}
+            onChange={(e) => handleInputChange('originCode', e.target.value.toUpperCase())}
+            style={{
+              width: '100%',
+              padding: '8px',
+              border: '1px solid #ddd',
+              borderRadius: '4px',
+              fontSize: '14px'
+            }}
+          />
+        </div>
+
+        <div>
+          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
+            Destination Code:
+          </label>
+          <input
+            type="text"
+            value={ticketInfo.destinationCode}
+            onChange={(e) => handleInputChange('destinationCode', e.target.value.toUpperCase())}
+            style={{
+              width: '100%',
+              padding: '8px',
+              border: '1px solid #ddd',
+              borderRadius: '4px',
+              fontSize: '14px'
+            }}
+          />
+        </div>
+
+        <div>
+          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
+            Origin City:
+          </label>
+          <input
+            type="text"
+            value={ticketInfo.originCity}
+            onChange={(e) => handleInputChange('originCity', e.target.value.toUpperCase())}
+            style={{
+              width: '100%',
+              padding: '8px',
+              border: '1px solid #ddd',
+              borderRadius: '4px',
+              fontSize: '14px'
+            }}
+          />
+        </div>
+
+        <div>
+          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
+            Destination City:
+          </label>
+          <input
+            type="text"
+            value={ticketInfo.destinationCity}
+            onChange={(e) => handleInputChange('destinationCity', e.target.value.toUpperCase())}
+            style={{
+              width: '100%',
+              padding: '8px',
+              border: '1px solid #ddd',
+              borderRadius: '4px',
+              fontSize: '14px'
+            }}
+          />
+        </div>
+
+        <div>
+          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
+            Date:
+          </label>
+          <input
+            type="text"
+            value={ticketInfo.date}
+            onChange={(e) => handleInputChange('date', e.target.value.toUpperCase())}
+            style={{
+              width: '100%',
+              padding: '8px',
+              border: '1px solid #ddd',
+              borderRadius: '4px',
+              fontSize: '14px'
+            }}
+          />
+        </div>
+
+        <div>
+          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
+            Time:
+          </label>
+          <input
+            type="text"
+            value={ticketInfo.time}
+            onChange={(e) => handleInputChange('time', e.target.value)}
+            style={{
+              width: '100%',
+              padding: '8px',
+              border: '1px solid #ddd',
+              borderRadius: '4px',
+              fontSize: '14px'
+            }}
+          />
+        </div>
+
+        <div>
+          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
+            Seat:
+          </label>
+          <input
+            type="text"
+            value={ticketInfo.seat}
+            onChange={(e) => handleInputChange('seat', e.target.value.toUpperCase())}
+            style={{
+              width: '100%',
+              padding: '8px',
+              border: '1px solid #ddd',
+              borderRadius: '4px',
+              fontSize: '14px'
+            }}
+          />
+        </div>
+      </div>
+
       <button
         onClick={downloadPDF}
         style={{
@@ -248,7 +466,7 @@ const Ticket = () => {
             marginLeft: '25px'
           }}>
             <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#0066cc' }}>
-              AMERICAN AIRLINES
+              {ticketInfo.airline}
             </div>
             <div style={{ fontSize: '12px', color: '#666' }}>
               FLIGHT TICKET
@@ -258,15 +476,15 @@ const Ticket = () => {
           {/* Passenger and Route */}
           <div style={{ marginBottom: '15px', marginLeft: '25px' }}>
             <div style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '5px' }}>
-              JOHN SMITH
+              {ticketInfo.passengerName}
             </div>
             <div style={{ display: 'flex', alignItems: 'center', fontSize: '14px' }}>
-              <span style={{ fontWeight: 'bold' }}>JFK</span>
+              <span style={{ fontWeight: 'bold' }}>{ticketInfo.originCode}</span>
               <span style={{ margin: '0 10px', color: '#666' }}>→</span>
-              <span style={{ fontWeight: 'bold' }}>LAX</span>
+              <span style={{ fontWeight: 'bold' }}>{ticketInfo.destinationCode}</span>
             </div>
             <div style={{ fontSize: '12px', color: '#666' }}>
-              NEW YORK → LOS ANGELES
+              {ticketInfo.originCity} → {ticketInfo.destinationCity}
             </div>
           </div>
 
@@ -279,19 +497,19 @@ const Ticket = () => {
           }}>
             <div>
               <div style={{ color: '#666' }}>FLIGHT</div>
-              <div style={{ fontWeight: 'bold' }}>AA 1234</div>
+              <div style={{ fontWeight: 'bold' }}>{ticketInfo.flightNumber}</div>
             </div>
             <div>
               <div style={{ color: '#666' }}>DATE</div>
-              <div style={{ fontWeight: 'bold' }}>15 MAR 2024</div>
+              <div style={{ fontWeight: 'bold' }}>{ticketInfo.date}</div>
             </div>
             <div>
               <div style={{ color: '#666' }}>TIME</div>
-              <div style={{ fontWeight: 'bold' }}>14:30</div>
+              <div style={{ fontWeight: 'bold' }}>{ticketInfo.time}</div>
             </div>
             <div>
               <div style={{ color: '#666' }}>SEAT</div>
-              <div style={{ fontWeight: 'bold' }}>12A</div>
+              <div style={{ fontWeight: 'bold' }}>{ticketInfo.seat}</div>
             </div>
           </div>
         </div>
@@ -317,22 +535,22 @@ const Ticket = () => {
 
             <div style={{ textAlign: 'center', marginBottom: '8px' }}>
               <div style={{ fontSize: '9px', fontWeight: 'bold', marginBottom: '3px' }}>
-                JOHN SMITH
+                {ticketInfo.passengerName}
               </div>
               <div style={{ fontSize: '8px', color: '#666', marginBottom: '3px' }}>
-                JFK → LAX
+                {ticketInfo.originCode} → {ticketInfo.destinationCode}
               </div>
             </div>
 
             <div style={{ textAlign: 'center', marginBottom: '8px' }}>
               <div style={{ fontSize: '10px', fontWeight: 'bold', marginBottom: '3px' }}>
-                AA 1234
+                {ticketInfo.flightNumber}
               </div>
               <div style={{ fontSize: '8px', color: '#666', marginBottom: '3px' }}>
-                15 MAR
+                {ticketInfo.date.split(' ').slice(0, 2).join(' ')}
               </div>
               <div style={{ fontSize: '9px', fontWeight: 'bold' }}>
-                12A
+                {ticketInfo.seat}
               </div>
             </div>
 
