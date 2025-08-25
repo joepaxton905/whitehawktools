@@ -1,23 +1,103 @@
+"use client";
+
+import { useRef } from 'react';
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
+
 const Ticket = () => {
+    const ticketRef = useRef(null);
+
+    const downloadPDF = async () => {
+        if (ticketRef.current) {
+            try {
+                // Create canvas with higher quality settings
+                const canvas = await html2canvas(ticketRef.current, {
+                    scale: 3, // Higher scale for better quality
+                    useCORS: true,
+                    allowTaint: true,
+                    backgroundColor: '#ffffff',
+                    logging: false,
+                    width: ticketRef.current.offsetWidth,
+                    height: ticketRef.current.offsetHeight,
+                    scrollX: 0,
+                    scrollY: 0,
+                    windowWidth: ticketRef.current.offsetWidth,
+                    windowHeight: ticketRef.current.offsetHeight
+                });
+
+                const imgData = canvas.toDataURL('image/png', 1.0);
+
+                // Calculate dimensions to maintain aspect ratio
+                const ticketWidth = 600; // Original ticket width
+                const ticketHeight = 200; // Original ticket height
+                const aspectRatio = ticketWidth / ticketHeight;
+
+                // Create PDF with custom dimensions that match the ticket
+                const pdfWidth = 210; // A4 width in mm
+                const pdfHeight = pdfWidth / aspectRatio;
+
+                const pdf = new jsPDF({
+                    orientation: pdfWidth > pdfHeight ? 'landscape' : 'portrait',
+                    unit: 'mm',
+                    format: [pdfWidth, pdfHeight]
+                });
+
+                // Add image to fill the entire PDF page
+                pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight, '', 'FAST');
+
+                pdf.save('flight-ticket.pdf');
+            } catch (error) {
+                console.error('Error generating PDF:', error);
+                alert('Error generating PDF. Please try again.');
+            }
+        }
+    };
+
     return (
         <div style={{
             display: 'flex',
+            flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
             minHeight: '100vh',
             backgroundColor: '#f0f0f0',
             padding: '20px'
         }}>
-            <div style={{
-                width: '600px',
-                height: '200px',
-                backgroundColor: 'white',
-                border: '2px solid #ddd',
-                borderRadius: '10px',
-                boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-                display: 'flex',
-                overflow: 'hidden'
-            }}>
+            <button
+                onClick={downloadPDF}
+                style={{
+                    marginBottom: '20px',
+                    padding: '12px 24px',
+                    backgroundColor: '#0066cc',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '5px',
+                    fontSize: '16px',
+                    fontWeight: 'bold',
+                    cursor: 'pointer',
+                    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                    transition: 'background-color 0.3s ease'
+                }}
+                onMouseOver={(e) => e.target.style.backgroundColor = '#0052a3'}
+                onMouseOut={(e) => e.target.style.backgroundColor = '#0066cc'}
+            >
+                Download PDF
+            </button>
+
+            <div
+                ref={ticketRef}
+                style={{
+                    width: '600px',
+                    height: '200px',
+                    backgroundColor: 'white',
+                    border: '2px solid #ddd',
+                    borderRadius: '10px',
+                    boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+                    display: 'flex',
+                    overflow: 'hidden',
+                    fontFamily: 'Arial, sans-serif' // Ensure consistent font
+                }}
+            >
                 {/* Left side - main ticket */}
                 <div style={{
                     flex: '3',
@@ -57,31 +137,60 @@ const Ticket = () => {
                         marginBottom: '15px',
                         marginLeft: '25px'
                     }}>
-                        <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#0066cc' }}>
+                        <div style={{
+                            fontSize: '18px',
+                            fontWeight: 'bold',
+                            color: '#0066cc',
+                            fontFamily: 'Arial, sans-serif'
+                        }}>
                             AMERICAN AIRLINES
                         </div>
-                        <div style={{ fontSize: '12px', color: '#666' }}>
+                        <div style={{
+                            fontSize: '12px',
+                            color: '#666',
+                            fontFamily: 'Arial, sans-serif'
+                        }}>
                             FLIGHT TICKET
                         </div>
                     </div>
 
                     {/* Passenger and Route */}
                     <div style={{ marginBottom: '15px', marginLeft: '25px' }}>
-                        <div style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '5px' }}>
+                        <div style={{
+                            fontSize: '16px',
+                            fontWeight: 'bold',
+                            marginBottom: '5px',
+                            fontFamily: 'Arial, sans-serif'
+                        }}>
                             JOHN SMITH
                         </div>
-                        <div style={{ display: 'flex', alignItems: 'center', fontSize: '14px' }}>
+                        <div style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            fontSize: '14px',
+                            fontFamily: 'Arial, sans-serif'
+                        }}>
                             <span style={{ fontWeight: 'bold' }}>JFK</span>
                             <span style={{ margin: '0 10px', color: '#666' }}>→</span>
                             <span style={{ fontWeight: 'bold' }}>LAX</span>
                         </div>
-                        <div style={{ fontSize: '12px', color: '#666' }}>
+                        <div style={{
+                            fontSize: '12px',
+                            color: '#666',
+                            fontFamily: 'Arial, sans-serif'
+                        }}>
                             NEW YORK → LOS ANGELES
                         </div>
                     </div>
 
                     {/* Flight Details */}
-                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', marginLeft: '25px' }}>
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        fontSize: '12px',
+                        marginLeft: '25px',
+                        fontFamily: 'Arial, sans-serif'
+                    }}>
                         <div>
                             <div style={{ color: '#666' }}>FLIGHT</div>
                             <div style={{ fontWeight: 'bold' }}>AA 1234</div>
@@ -116,27 +225,57 @@ const Ticket = () => {
                         justifyContent: 'space-between',
                         alignItems: 'center'
                     }}>
-                        <div style={{ fontSize: '8px', color: '#666', textAlign: 'center', marginBottom: '5px' }}>
+                        <div style={{
+                            fontSize: '8px',
+                            color: '#666',
+                            textAlign: 'center',
+                            marginBottom: '5px',
+                            fontFamily: 'Arial, sans-serif'
+                        }}>
                             BOARDING PASS
                         </div>
 
                         <div style={{ textAlign: 'center', marginBottom: '8px' }}>
-                            <div style={{ fontSize: '9px', fontWeight: 'bold', marginBottom: '3px' }}>
+                            <div style={{
+                                fontSize: '9px',
+                                fontWeight: 'bold',
+                                marginBottom: '3px',
+                                fontFamily: 'Arial, sans-serif'
+                            }}>
                                 JOHN SMITH
                             </div>
-                            <div style={{ fontSize: '8px', color: '#666', marginBottom: '3px' }}>
+                            <div style={{
+                                fontSize: '8px',
+                                color: '#666',
+                                marginBottom: '3px',
+                                fontFamily: 'Arial, sans-serif'
+                            }}>
                                 JFK → LAX
                             </div>
                         </div>
 
                         <div style={{ textAlign: 'center', marginBottom: '8px' }}>
-                            <div style={{ fontSize: '10px', fontWeight: 'bold', marginBottom: '3px' }}>
+                            <div style={{
+                                fontSize: '10px',
+                                fontWeight: 'bold',
+                                marginBottom: '3px',
+                                fontFamily: 'Arial, sans-serif'
+                            }}>
                                 AA 1234
                             </div>
-                            <div style={{ fontSize: '8px', color: '#666', marginBottom: '3px' }}>
+                            <div style={{
+                                fontSize: '8px',
+                                color: '#666',
+                                marginBottom: '3px',
+                                fontFamily: 'Arial, sans-serif'
+                            }}>
                                 15 MAR
                             </div>
-                            <div style={{ fontSize: '9px', fontWeight: 'bold' }}>
+                            <div style={{
+                                fontSize: '9px',
+                                fontWeight: 'bold',
+                                fontFamily: 'Arial, sans-serif'
+                            }}>
                                 12A
                             </div>
                         </div>
@@ -179,7 +318,8 @@ const Ticket = () => {
                             textAlign: 'center',
                             lineHeight: '1.3',
                             letterSpacing: '0.3px',
-                            padding: '5px 2px'
+                            padding: '5px 2px',
+                            fontFamily: 'Arial, sans-serif'
                         }}>
                             BOARDING GATES CLOSE 15 MINUTES BEFORE DEPARTURE TIME. PASSENGERS MAY NOT BE ACCEPTED FOR TRAVEL AFTER GATES CLOSE.
                         </div>
